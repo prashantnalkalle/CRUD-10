@@ -18,31 +18,19 @@
 							<form action="" id="inputform">
 								<div class="form-group">
 									<label for="name" class="font-weight-bold" >Name*</label>
-									<input type="text" class="form-control" id="name">
+									<input type="text" required class="form-control" id="name">
 								</div>
 								<div class="form-group">
 									<label for="email" class="font-weight-bold" >Email*</label>
-									<input type="email" class="form-control" id="email">
+									<input type="email" required class="form-control" id="email">
 								</div>
 								<div class="form-group">
 									<label for="body" class="font-weight-bold" >Comment*</label>
-									<textarea rows="4" class="form-control" id="body"></textarea>
+									<textarea rows="4" required class="form-control" id="body"></textarea>
 								</div>
 								<div class="form-group">
 									<label for="UserId" class="font-weight-bold">UserId*</label>
-									<select class="form-control" id="UserId">
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
-										<option value="10">10</option>
-
-									</select>
+									<input type="number" class="form-control" id="UserId">
 								</div>
 								<button class="btn btn-outline-primary btn-sm btn-block" id="AddComment">Add Comment</button>
 								<button type="button" class=" d-none btn btn-outline-success btn-sm btn-block" id="UpdateComment">Update Comment</button>
@@ -71,14 +59,7 @@
 										</tr>
 									</thead>
 									<tbody id="commentContainer">
-										<!-- <tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-										</tr> -->
+										
 									</tbody>
 								</table>
 							</div>

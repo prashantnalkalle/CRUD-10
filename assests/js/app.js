@@ -37,7 +37,13 @@ function fetchcomment(){
 
             createComment(commentArr.reverse())
         }
+
+     spinner.classList.add('d-none')
+
     }
+
+    spinner.classList.add('d-none')
+
 }
 
 fetchcomment()
@@ -57,7 +63,6 @@ function createComment(arr){
     })
 
     commentContainer.innerHTML = result
-    spinner.classList.add('d-none')
 
 }
 
@@ -94,7 +99,8 @@ function onsubmit(ele){
 
     }
 
-
+    spinner.classList.add('d-none')
+ 
 }
 
 function createNewCommet(newObj,res){
@@ -150,6 +156,9 @@ function OnEdit(ele){
 
     }
 
+    spinner.classList.add('d-none')
+
+
 }
 
 function onupdatehandl(){
@@ -195,6 +204,8 @@ function onupdatehandl(){
 
     }
 
+    spinner.classList.add('d-none')
+
 
 
 }
@@ -235,18 +246,13 @@ function Onremove(ele){
             spinner.classList.add('d-none')
 
     }
+
+    spinner.classList.add('d-none')
+
   }
 });
 
-
-
-
-
-
-
-
-
-
+    spinner.classList.add('d-none')
 }
 
 
