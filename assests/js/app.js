@@ -19,7 +19,7 @@ function snackbar(msg,icon){
     swal.fire({
         title : msg,
         icon : icon,
-        timer : 3000
+        timer : 2000
     })
 }
 
@@ -42,7 +42,6 @@ function fetchcomment(){
 
     }
 
-    spinner.classList.add('d-none')
 
 }
 
@@ -99,7 +98,6 @@ function onsubmit(ele){
 
     }
 
-    spinner.classList.add('d-none')
  
 }
 
@@ -149,14 +147,16 @@ function OnEdit(ele){
 
             AddComment.classList.add('d-none')
             UpdateComment.classList.remove('d-none')
-
+            inputform.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
 
         }
         spinner.classList.add('d-none')
 
     }
 
-    spinner.classList.add('d-none')
 
 
 }
@@ -185,7 +185,7 @@ function onupdatehandl(){
     xhr.onload = function (){
         if(xhr.status >= 200 && xhr.status <= 299){
             let tr =document.getElementById(updateId).children
-
+            
             tr[1].innerText = updateObj.name
             tr[2].innerText = updateObj.email
             tr[3].innerText = updateObj.body
@@ -196,76 +196,64 @@ function onupdatehandl(){
             UpdateComment.classList.add('d-none')
 
             snackbar(`The Comment Id ${updateId} is Updated successfully!!`,'success')
+            let row = document.getElementById(updateId)
+            row.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+
+            row.classList.add('highlight');
+
+            setTimeout(() => {
+                row.classList.remove('highlight');
+            }, 4000);
+
+
 
 
         }
 
         spinner.classList.add('d-none')
-
     }
-
-    spinner.classList.add('d-none')
-
-
 
 }
 
 function Onremove(ele){
     let removeId = ele.closest('tr').id
-    spinner.classList.remove('d-none')
 
     Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!"
-}).then((result) => {
-  if (result.isConfirmed){
-        
-    let removeURL = `${Base_url}/${removeId}`
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed){
+            spinner.classList.remove('d-none')
+                
+            let removeURL = `${Base_url}/${removeId}`
 
-    let xhr = new XMLHttpRequest()
+            let xhr = new XMLHttpRequest()
 
-    xhr.open('DELETE',removeURL)
+            xhr.open('DELETE',removeURL)
 
-    xhr.send()
+            xhr.send()
 
-    xhr.onload = function (){
-        if(xhr.status >= 200 && xhr.status <= 299){
-
-
-            ele.closest('tr').remove()
-         snackbar(`The  Comment Id ${removeId} is Removed successfully!!`,'success')
-
-        }
-
-
+            xhr.onload = function (){
+                if(xhr.status >= 200 && xhr.status <= 299){
+                ele.closest('tr').remove()
+                snackbar(`The  Comment Id ${removeId} is Removed successfully!!`,'success')
+                }
+                spinner.classList.add('d-none')
+            }
             spinner.classList.add('d-none')
 
-    }
+        }
+    });
 
-    spinner.classList.add('d-none')
-
-  }
-});
-
-    spinner.classList.add('d-none')
 }
-
-
-
-
-
-
-
-
-
 
 inputform.addEventListener('submit',onsubmit)
 UpdateComment.addEventListener('click',onupdatehandl)
-
-
-

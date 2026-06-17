@@ -5,6 +5,10 @@
     text-overflow: ellipsis;
 }
 
+.highlight{
+    background-color: green;
+}
+
 .spinner{
     position: fixed;
     top: 0;
