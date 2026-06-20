@@ -90,8 +90,6 @@ function onsubmit(ele){
     xhr.onload = function (){
         if(xhr.status >= 200 && xhr.status <= 299){
             let res = JSON.parse(xhr.response)
-
-
             createNewCommet(newObj,res)
         }
         spinner.classList.add('d-none')
@@ -244,6 +242,13 @@ function Onremove(ele){
             xhr.onload = function (){
                 if(xhr.status >= 200 && xhr.status <= 299){
                 ele.closest('tr').remove()
+                commentArr.pop()
+                let alltr = document.querySelectorAll('#commentContainer tr')
+                alltr.forEach((ele,i)=>{
+                    ele.firstElementChild.innerHTML = commentArr.length - i
+                })
+
+
                 snackbar(`The  Comment Id ${removeId} is Removed successfully!!`,'success')
                 }
                 spinner.classList.add('d-none')
